@@ -1,0 +1,70 @@
+<!-- Create a JavaScript program to perform the following:
+ Add,subtract, multiply, and divide two numbers using arithmetic operators.
+ Use comparison operators to check if two numbers are equal and if one
+number is greater than the other.
+ Use logical operators to check if both conditions (e.g., a > 10 and b < 5) are
+true. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        input{
+            padding: 5px 8px;
+            width: auto;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="calc" onchange="Calc()">
+    <script>
+        let calc = document.getElementById('calc');
+
+        const Calc = () =>{
+            if(calc.value.includes('+')){
+                const myArray = calc.value.split('+');
+                const sum = parseInt(myArray[0]) + parseInt(myArray[1]);
+                calc.value = sum;
+            }
+            else if(calc.value.includes('-')){
+                const myArray = calc.value.split('-');
+                const sum = parseInt(myArray[0]) - parseInt(myArray[1]);
+                calc.value = sum;
+            }
+            else if(calc.value.includes('*')){
+                const myArray = calc.value.split('*');
+                const sum = parseInt(myArray[0]) * parseInt(myArray[1]);
+                calc.value = sum;
+            }
+            else if(calc.value.includes('/')){
+                const myArray = calc.value.split('/');
+                const sum = parseInt(myArray[0]) / parseInt(myArray[1]);
+                calc.value = sum;
+            }
+            else if(calc.value.includes('..')){
+                const myArray = calc.value.split('..');
+                const sum = parseInt(myArray[0]) > parseInt(myArray[1]);
+                if(sum){
+                    calc.value = `${myArray[0]} is greater than ${myArray[1]}`;
+                }
+                else{
+                    calc.value = `${myArray[0]} is less than ${myArray[1]}`;
+                }
+            }
+            else{
+                calc.value = 'Invalid';
+            }
+        }
+
+    </script>
+</body>
+</html>

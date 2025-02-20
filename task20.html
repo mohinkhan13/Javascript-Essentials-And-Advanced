@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <span class="Clock">00 : </span>
+        <span class="Clock">00 :</span>
+        <span class="Clock">00</span>
+    </p>
+    <script>
+        let clock = document.getElementsByClassName('Clock');
+        let hour = parseInt(clock[0].innerHTML.split(':')[0].trim()); 
+        let minutes = parseInt(clock[1].innerHTML.split(':')[0].trim());
+        let second = parseInt(clock[2].innerHTML);
+
+        setInterval(() => {
+            second++;
+            if(second === 60){
+                second = 0;
+                minutes++;
+            }
+            if(minutes === 60){
+                minutes = 0;
+                hour = (hour + 1) % 24; // This ensures hour wraps around to 0 after 23
+            }
+            
+            // Formatting the time to ensure leading zeros
+            clock[0].innerHTML = `${hour.toString().padStart(2, '0')} : `;
+            clock[1].innerHTML = `${minutes.toString().padStart(2, '0')} :`;
+            clock[2].innerHTML = second.toString().padStart(2, '0');
+        }, 1000);
+    </script>
+</body>
+</html>
